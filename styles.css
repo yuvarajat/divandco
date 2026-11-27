@@ -159,6 +159,8 @@ h1 em { color: var(--wine); font-weight: inherit; }
 .rating-link:hover span:last-child { text-decoration: underline; }
 .stars { color: #8c591b; font: 1rem / 1.1 system-ui, sans-serif; letter-spacing: .11em; white-space: nowrap; }
 
+.hero-art { position: relative; min-width: 0; }
+
 .hero-photo {
   width: 100%;
   height: auto;
@@ -168,6 +170,39 @@ h1 em { color: var(--wine); font-weight: inherit; }
   background: var(--sand);
   box-shadow: .7rem .7rem 0 #e9ddcc;
   object-fit: cover;
+}
+
+.hero-rule {
+  position: absolute;
+  right: .85rem;
+  bottom: .85rem;
+  width: 3.2rem;
+  height: 1.75rem;
+  color: #f6ddbb;
+  pointer-events: none;
+}
+
+.hero-rule::before, .hero-rule::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background: currentColor;
+  transform-origin: right bottom;
+  content: "";
+}
+
+.hero-rule::before { width: 100%; height: 2px; }
+.hero-rule::after { width: 2px; height: 100%; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-rule::before, .hero-rule::after {
+    animation: hero-rule-in 760ms cubic-bezier(.22, 1, .36, 1) 390ms backwards;
+  }
+}
+
+@keyframes hero-rule-in {
+  from { opacity: .28; transform: scale(.05); }
+  to { opacity: 1; transform: none; }
 }
 
 .section { padding-block: clamp(3rem, 5.7vw, 5rem); }
